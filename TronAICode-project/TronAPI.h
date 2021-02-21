@@ -1,16 +1,20 @@
 /***************************************************************
  * @file       TronAPI.h
- * @brief      实现 AI 使用的基础API
+ * @brief      实现 AI 使用的基础API 的简要头文件
  * @author     Kiprey
  * @date       2021/2/21
  * @note	   请勿随意更改当前文件！
  **************************************************************/
 
-#pragma once
+#ifndef TRONAPI_H
+#define TRONAPI_H
 
 #include <iostream>
 #include <vector>
 using namespace std;
+
+// 如需启用 freopen，可以解除下行代码的注释符
+//#ifdef TRONDEBUG
 
 namespace TronAPI {
 	/*********************** 一些基础声明 ***********************/
@@ -28,180 +32,53 @@ namespace TronAPI {
 	using MapRowType = vector<MapNodeType>;
 	using MapType = vector<MapRowType>;
 
-
-	/****************** 以下是一些内部函数和内部变量，不建议调用 *****************/
-
-	// 全局变量初始化
-	static MapType _map = MapType(0);
-	static int _mapLength = -1, _mapWidth = -1;
-	static AIType _aiType = TronAPI::AIType::UNINIT;
-
 	// 获取特定类型的结点
-	static Point getTargetTypePoint(bool typeCheck(MapNodeType))
-	{
-		Point headLoc;
-		for (headLoc.x = 0; headLoc.x < _mapLength; headLoc.x++)
-		{
-			bool headFound = false;
-			for (headLoc.y = 0; headLoc.y < _mapWidth; headLoc.y++)
-			{
-				if (typeCheck(_map[headLoc.x][headLoc.y]))
-				{
-					headFound = true;
-					break;
-				}
-			}
-			if (headFound)
-				break;
-		}
-		return headLoc;
-	}
+	Point getTargetTypePoint(bool typeCheck(MapNodeType));
 
-	/****************** 以下是一些公用 API 接口，请放心调用 *****************/
-
-	inline static int getMapLength() { return _mapLength; }
-	inline static int getMapWidth() { return _mapWidth; }
-	inline static const MapType getMap() { return _map; }
-
-	// 判断当前结点是否为当前 AI 的结点
-	inline static bool nodeIsSelfHead(MapNodeType node)
-	{
-		return (_aiType == AIType::AI1 && node == MapNodeType::AI1_HEAD)
-			|| (_aiType == AIType::AI2 && node == MapNodeType::AI2_HEAD);
-	}
+	inline int getMapLength();
+	inline int getMapWidth();
+	inline const MapType getMap();
 
 	// 判断传入的 Point 是否越界 / 撞墙
-	inline static bool nodeIsOutOfBound(Point point)
-	{
-		return point.x < 0 || point.x >= _mapLength || point.y < 0 || point.y >= _mapWidth;
-	}
+	bool nodeIsOutOfBound(Point point);
 
-	inline static bool nodeIsSelfHead(Point point)
-	{
-		if (nodeIsOutOfBound(point))
-			return false;
-		return nodeIsSelfHead(_map[point.x][point.y]);
-	}
+	// 判断当前结点是否为当前 AI 的结点
+	bool nodeIsSelfHead(MapNodeType node);
+	bool nodeIsSelfHead(Point point);
 
-	inline static bool nodeIsSelfBody(MapNodeType node)
-	{
-		return (_aiType == AIType::AI1 && node == MapNodeType::AI1_BODY)
-			|| (_aiType == AIType::AI2 && node == MapNodeType::AI2_BODY);
-	}
-	inline static bool nodeIsSelfBody(Point point)
-	{
-		if (nodeIsOutOfBound(point))
-			return false;
-		return nodeIsSelfBody(_map[point.x][point.y]);
-	}
+	bool nodeIsSelfBody(MapNodeType node);
+	bool nodeIsSelfBody(Point point);
 
 	// 判断当前结点是否为对手 AI 的结点
-	inline static bool nodeIsEnemeHead(MapNodeType node)
-	{
-		return (_aiType == AIType::AI1 && node == MapNodeType::AI2_HEAD)
-			|| (_aiType == AIType::AI2 && node == MapNodeType::AI1_HEAD);
-	}
-	inline static bool nodeIsEnemeHead(Point point)
-	{
-		if (nodeIsOutOfBound(point))
-			return false;
-		return nodeIsEnemeHead(_map[point.x][point.y]);
-	}
+	bool nodeIsEnemeHead(MapNodeType node);
+	bool nodeIsEnemeHead(Point point);
 
-	inline static bool nodeIsEnemeBody(MapNodeType node)
-	{
-		return (_aiType == AIType::AI1 && node == MapNodeType::AI2_BODY)
-			|| (_aiType == AIType::AI2 && node == MapNodeType::AI1_BODY);
-	}
-	inline static bool nodeIsEnemeBody(Point point)
-	{
-		if (nodeIsOutOfBound(point))
-			return false;
-		return nodeIsEnemeBody(_map[point.x][point.y]);
-	}
+	bool nodeIsEnemeBody(MapNodeType node);
+	bool nodeIsEnemeBody(Point point);
 
 	// 判断当前结点是否没有被占据
-	inline static bool nodeIsEmpty(MapNodeType node) { return node == MapNodeType::NONE; }
-	inline static bool nodeIsEmpty(Point point) 
-	{ 
-		if (nodeIsOutOfBound(point))
-			return false;
-		return nodeIsEmpty(_map[point.x][point.y]);
-	}
+	bool nodeIsEmpty(MapNodeType node);
+	bool nodeIsEmpty(Point point);
 
 	// 将错误信息输出至 standard error 流上，并强制退出当前程序
 	// 注意执行该函数传入的信息，将会被显示在 远程的RichTextBox中
-	static void reportErrorAndAbort(string msg)
-	{
-		cerr << "[FATAL] " << msg << endl;
-		abort();
-	}
+	void reportErrorAndAbort(string msg);
 	// 将信息返回至远程程序，但不abort
-	static void reportInfo(string msg)
-	{
-		cerr << "[INFO] " << msg << endl;
-	}
+	void reportInfo(string msg);
 	// 用户调试用的输出，这类输出将被远程程序截获，但不会被处理
-	static void printDbgMsg(string msg)
-	{
-		cerr << "[DEBUG] " << msg << endl;
-	}
+	void printDbgMsg(string msg);
 	// 从远程程序中获取地图信息以及当前身份
-	static void getMapAndAIRoleFromRemote()
-	{
-		string AIRole;
-		cin >> AIRole >> _mapLength >> _mapWidth;
-		// 设置当前 AI 角色
-		if (AIRole == "AI1")
-			_aiType = AIType::AI1;
-		else if (AIRole == "AI2")
-			_aiType = AIType::AI2;
-		else
-			reportErrorAndAbort("设置 AI 角色时出错！");
-
-		// 开始设置地图
-		_map = MapType(_mapWidth, MapRowType(_mapLength));
-		for (int i = 0; i < _mapLength; i++)
-		{
-			for (int j = 0; j < _mapWidth; j++)
-			{
-				std::string singleton;
-				cin >> singleton;
-				if (singleton == "N")
-					_map[j][i] = MapNodeType::NONE;
-				else if (singleton == "1B")
-					_map[j][i] = MapNodeType::AI1_BODY;
-				else if (singleton == "2B")
-					_map[j][i] = MapNodeType::AI2_BODY;
-				else if (singleton == "1H")
-					_map[j][i] = MapNodeType::AI1_HEAD;
-				else if (singleton == "2H")
-					_map[j][i] = MapNodeType::AI2_HEAD;
-				else
-					reportErrorAndAbort("remote 端返回了错误的 map 结点格式");
-			}
-		}
-	}
+	void getMapAndAIRoleFromRemote();
 	// 设置当前AI的下一个方向
-	static void setNextDirection(DirectType direct)
-	{
-		// 向远程发送信息
-		switch (direct)
-		{
-		case DirectType::Down:	cout << "down";		break;
-		case DirectType::Up:	cout << "up";		break;
-		case DirectType::Left:	cout << "left";		break;
-		case DirectType::Right: cout << "right";	break;
-		case DirectType::None:  cout << "none";	break;
-		default: reportErrorAndAbort("无法识别的方向");
-		}
-	}
+	void setNextDirection(DirectType direct);
 	// 获取某个坐标向特定方向移动后的坐标
-	static Point getTheUpPoint(Point point) { return Point(point.x, point.y - 1); }
-	static Point getTheDownPoint(Point point) { return Point(point.x, point.y + 1); }
-	static Point getTheLeftPoint(Point point) { return Point(point.x - 1, point.y); }
-	static Point getTheRightPoint(Point point) { return Point(point.x + 1, point.y); }
+	Point getTheUpPoint(Point point);
+	Point getTheDownPoint(Point point);
+	Point getTheLeftPoint(Point point);
+	Point getTheRightPoint(Point point);
 	// 获取头节点地址
-	static Point getSelfHeadPoint() { return getTargetTypePoint(nodeIsSelfHead); }
-	static Point getEnemyHeadPoint() { return getTargetTypePoint(nodeIsEnemeHead); }
+	Point getSelfHeadPoint();
+	Point getEnemyHeadPoint();
 };
+
+#endif;
