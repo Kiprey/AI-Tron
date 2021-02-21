@@ -1,0 +1,32 @@
+AI1 
+30 	30 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+1H 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	2H 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
+N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	N 	 
