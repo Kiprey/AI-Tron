@@ -17,7 +17,7 @@
   使用 C++ 语言编写文件夹 [TronAICode-cpp](https://github.com/Kiprey/AI-Tron/tree/master/TronAICode-cpp) 内的 [AI.cpp](https://github.com/Kiprey/AI-Tron/blob/master/TronAICode-cpp/AI.cpp) 文件，以实现其中 `AIGetDirect` 函数。
 
   > **注意其他 C++ 文件不允许修改。**
->
+  >
   > **不允许使用与标准输入输出流相关的函数，包括但不限于 cout, cin, cerr**。如有需求，请使用 `void TronAPI::printDbgMsg(string)` 函数
   
   之后编译该 C++ 项目以生成 AI 程序。
@@ -38,79 +38,75 @@
 
   ```cpp
   namespace TronAPI {
-  	// 坐标类
-  	struct Point {
-  		int x, y;
-  		Point(int _x = -1, int _y = -1) : x(_x), y(_y) {}
-  	};
-  	// 地图的结点类
-  	enum MapNodeType { AI1_BODY, AI2_BODY, AI1_HEAD, AI2_HEAD, NONE };
-  	// DirectType 分别标识上下左右四个方向，以及上一次的方向
-  	// 由于执行程序时没有上一次方向的信息，因此 DirectType::None 可以看作听天由命 XD
-  	enum DirectType { Up, Down, Left, Right, None };
-  	enum AIType { AI1, AI2, UNINIT };
-  	using MapRowType = vector<MapNodeType>;
-  	using MapType = vector<MapRowType>;
+    // 坐标类
+    struct Point {
+      int x, y;
+      Point(int _x = -1, int _y = -1) : x(_x), y(_y) {}
+    };
+    // 地图的结点类
+    enum MapNodeType { AI1_BODY, AI2_BODY, AI1_HEAD, AI2_HEAD, NONE };
+    // DirectType 分别标识上下左右四个方向，以及上一次的方向
+    // 由于执行程序时没有上一次方向的信息，因此 DirectType::None 可以看作听天由命 XD
+    enum DirectType { Up, Down, Left, Right, None };
+    enum AIType { AI1, AI2, UNINIT };
+    using MapRowType = vector<MapNodeType>;
+    using MapType = vector<MapRowType>;
   
-  	// 获取特定类型的结点
-  	Point getTargetTypePoint(bool typeCheck(MapNodeType));
+    // 获取特定类型的结点
+    Point getTargetTypePoint(bool typeCheck(MapNodeType));
   
-  	inline int getMapLength();
-  	inline int getMapWidth();
-  	inline const MapType getMap();
+    inline int getMapLength();
+    inline int getMapWidth();
+    inline const MapType getMap();
   
-  	// 判断传入的 Point 是否越界 / 撞墙
-  	bool nodeIsOutOfBound(Point point);
+    // 判断传入的 Point 是否越界 / 撞墙
+    bool nodeIsOutOfBound(Point point);
   
-  	// 判断当前结点是否为当前 AI 的结点
-  	bool nodeIsSelfHead(MapNodeType node);
-  	bool nodeIsSelfHead(Point point);
+    // 判断当前结点是否为当前 AI 的结点
+    bool nodeIsSelfHead(MapNodeType node);
+    bool nodeIsSelfHead(Point point);
   
-  	bool nodeIsSelfBody(MapNodeType node);
-  	bool nodeIsSelfBody(Point point);
+    bool nodeIsSelfBody(MapNodeType node);
+    bool nodeIsSelfBody(Point point);
   
-  	// 判断当前结点是否为对手 AI 的结点
-  	bool nodeIsEnemeHead(MapNodeType node);
-  	bool nodeIsEnemeHead(Point point);
+    // 判断当前结点是否为对手 AI 的结点
+    bool nodeIsEnemeHead(MapNodeType node);
+    bool nodeIsEnemeHead(Point point);
   
-  	bool nodeIsEnemeBody(MapNodeType node);
-  	bool nodeIsEnemeBody(Point point);
+    bool nodeIsEnemeBody(MapNodeType node);
+    bool nodeIsEnemeBody(Point point);
   
-  	// 判断当前结点是否没有被占据
-  	bool nodeIsEmpty(MapNodeType node);
-  	bool nodeIsEmpty(Point point);
+    // 判断当前结点是否没有被占据
+    bool nodeIsEmpty(MapNodeType node);
+    bool nodeIsEmpty(Point point);
   
-  	// 将错误信息输出至 standard error 流上，并强制退出当前程序
-  	// 注意执行该函数传入的信息，将会被显示在 远程的RichTextBox中
-  	void reportErrorAndAbort(string msg);
-  	// 将信息返回至远程程序，但不abort
-  	void reportInfo(string msg);
-  	// 用户调试用的输出，这类输出将被远程程序截获，但不会被处理
-  	void printDbgMsg(string msg);
-  	// 从远程程序中获取地图信息以及当前身份
-  	void getMapAndAIRoleFromRemote();
-  	// 设置当前AI的下一个方向
-  	void setNextDirection(DirectType direct);
-  	// 获取某个坐标向特定方向移动后的坐标
-  	Point getTheUpPoint(Point point);
-  	Point getTheDownPoint(Point point);
-  	Point getTheLeftPoint(Point point);
-  	Point getTheRightPoint(Point point);
-  	// 获取头节点地址
-  	Point getSelfHeadPoint();
-  	Point getEnemyHeadPoint();
+    // 将错误信息输出至 standard error 流上，并强制退出当前程序
+    // 注意执行该函数传入的信息，将会被显示在 远程的RichTextBox中
+    void reportErrorAndAbort(string msg);
+    // 将信息返回至远程程序，但不abort
+    void reportInfo(string msg);
+    // 用户调试用的输出，这类输出将被远程程序截获，但不会被处理
+    void printDbgMsg(string msg);
+    // 从远程程序中获取地图信息以及当前身份
+    void getMapAndAIRoleFromRemote();
+    // 设置当前AI的下一个方向
+    void setNextDirection(DirectType direct);
+    // 获取某个坐标向特定方向移动后的坐标
+    Point getTheUpPoint(Point point);
+    Point getTheDownPoint(Point point);
+    Point getTheLeftPoint(Point point);
+    Point getTheRightPoint(Point point);
+    // 获取头节点地址
+    Point getSelfHeadPoint();
+    Point getEnemyHeadPoint();
   };
   ```
 
-## 三、技术细节
-
-
-
-## 四、可以改进的地方
+## 三、可以改进的地方
 
 > 以下这些点实现起来并不困难，只是需要点时间。
 >
-> 主要是我想偷个懒，所以，**欢迎 Pull Request！**
+> 主要是想偷个懒，所以，**欢迎 Pull Request！**
 >
 > 如果觉得有点难想合作改进的也可以联系我！
 
@@ -138,18 +134,18 @@
 
   即Controller进程放在服务器上跑，玩家只需执行 AI 程序与服务器进行网络连接、信息交互即可。由于本地对战的源码已经编写完成，因此我们可以在该源码的基础之上，非常方便的编写出服务器端的Server Controller。
 
-  不过与本地的Controller不同的是，放在服务器上执行的 Server Controller 需要考虑到多个玩家连接的情况，因此需要先使用一个队列将所有连接进行储存。如果当前队列中存在两个及以上个连接，则循环取出两个连接 => 重置游戏数据 => 对这两个连接开始游戏。需要注意的是每个对局都必须开一个线程，在该线程上声明新的Controller类实例以及Game类实例。
+  不过与本地的Controller不同的是，放在服务器上执行的 Server Controller 需要考虑到多个玩家连接的情况，因此需要先使用一个队列将所有连接进行储存。如果当前队列中存在两个及以上个连接，则循环**取出两个连接 => 重置游戏数据 => 对这两个连接开始游戏**这样的一个过程。需要注意的是每个对局都必须开一个线程，在该线程上声明新的Controller类实例以及Game类实例。
 
-  最后，对于多线程程序来说，务必要避开死锁和条件竞争等较为烦人的问题。 
+  最后，对于多线程程序来说，务必要避开死锁和条件竞争等较为烦人的问题。
 
   对于本地的 AI 程序。只需再添加一个**显示地图和信息输出的 UI** 即可。
 
   远程对战的 Controller 和 AI 程序可以全部用 C++ 程序编写，这样便于跨平台玩耍。
 
-## 五、其他说明
+## 四、其他说明
 
-- 如果满意自己所编写的 AI 算法，想将它分享出去，欢迎提交 Pull Request 到该仓库的 `AI-Code-Repository`文件夹中。
+- 如果想贡献自己的 AI 算法，欢迎提交 Pull Request 到该仓库的 `AI-Code-Repository`文件夹中。
 
 - 如果有想实现上面那些改进点的小想法，也欢迎提交 Pull Request。
 
-- 如果有任何问题，欢迎[联系我](mailto: Kiprey@qq.com)
+- 如果有任何问题，欢迎[联系我](mailto:Kiprey@qq.com)
