@@ -12,15 +12,17 @@
 
 - **编译**
 
-  使用 VS 编译文件夹 [AI-Tron-Controller-project](https://github.com/Kiprey/AI-Tron/tree/master/AI-Tron-Controller-project) 内的 C# 项目以生成 Controller 程序。
+  - 使用 VS 编译文件夹 [AI-Tron-Controller-project](https://github.com/Kiprey/AI-Tron/tree/master/AI-Tron-Controller-project) 内的 C# 项目以生成 Controller 程序。
 
-  使用 C++ 语言编写文件夹 [TronAICode-cpp](https://github.com/Kiprey/AI-Tron/tree/master/TronAICode-cpp) 内的 [AI.cpp](https://github.com/Kiprey/AI-Tron/blob/master/TronAICode-cpp/AI.cpp) 文件，以实现其中 `AIGetDirect` 函数。
+    若无 VS 环境，则可以点击[这里](https://github.com/Kiprey/AI-Tron/releases/tag/v1.0)直接下载已编译的二进制文件。
 
-  > **注意其他 C++ 文件不允许修改。**
-  >
-  > **不允许使用与标准输入输出流相关的函数，包括但不限于 cout, cin, cerr**。如有需求，请使用 `void TronAPI::printDbgMsg(string)` 函数
+  - 使用 C++ 语言编写文件夹 [TronAICode-cpp](https://github.com/Kiprey/AI-Tron/tree/master/TronAICode-cpp) 内的 [AI.cpp](https://github.com/Kiprey/AI-Tron/blob/master/TronAICode-cpp/AI.cpp) 文件，以实现其中 `AIGetDirect` 函数。
   
-  之后编译该 C++ 项目以生成 AI 程序。
+    > **注意其他 C++ 文件不允许修改。**
+    >
+    > **不允许使用与标准输入输出流相关的函数，包括但不限于 cout, cin, cerr**。如有需求，请使用 `void TronAPI::printDbgMsg(string)` 函数
+  
+    之后编译该 C++ 项目以生成 AI 程序。
   
 - **运行**
 
