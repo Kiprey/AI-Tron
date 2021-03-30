@@ -176,10 +176,18 @@ namespace TronAPI {
 		}
 	}
 	// 获取某个坐标向特定方向移动后的坐标
-	Point getTheUpPoint(Point point) { return Point(point.x, point.y - 1); }
-	Point getTheDownPoint(Point point) { return Point(point.x, point.y + 1); }
-	Point getTheLeftPoint(Point point) { return Point(point.x - 1, point.y); }
-	Point getTheRightPoint(Point point) { return Point(point.x + 1, point.y); }
+	Point getBesidePoint(Point point,DirectType direct)
+	{
+		switch (direct)
+		{
+		case DirectType::Down:	return Point(point.x, point.y + 1);
+		case DirectType::Up:	return Point(point.x, point.y - 1);
+		case DirectType::Left:	return Point(point.x - 1, point.y);
+		case DirectType::Right: return Point(point.x + 1, point.y);
+		default: reportErrorAndAbort("无法识别的方向"); return Point();
+		}
+
+	}
 	// 获取头节点地址
 	Point getSelfHeadPoint() { return getTargetTypePoint(nodeIsSelfHead); }
 	Point getEnemyHeadPoint() { return getTargetTypePoint(nodeIsEnemeHead); }
