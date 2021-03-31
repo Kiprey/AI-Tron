@@ -176,6 +176,12 @@ namespace TronAPI {
 		}
 	}
 	// 获取某个坐标向特定方向移动后的坐标
+	/// NOTE: 仍然保留原先的函数，以便于更好的兼容旧版API
+	Point getTheUpPoint(Point point) { return Point(point.x, point.y - 1); }
+	Point getTheDownPoint(Point point) { return Point(point.x, point.y + 1); }
+	Point getTheLeftPoint(Point point) { return Point(point.x - 1, point.y); }
+	Point getTheRightPoint(Point point) { return Point(point.x + 1, point.y); }
+
 	Point getBesidePoint(Point point,DirectType direct)
 	{
 		switch (direct)
