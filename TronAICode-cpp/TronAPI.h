@@ -72,10 +72,7 @@ namespace TronAPI {
 	// 设置当前AI的下一个方向
 	void setNextDirection(DirectType direct);
 	// 获取某个坐标向特定方向移动后的坐标
-	Point getTheUpPoint(Point point);
-	Point getTheDownPoint(Point point);
-	Point getTheLeftPoint(Point point);
-	Point getTheRightPoint(Point point);
+	Point getBesidePoint(Point point, DirectType direct);
 	// 获取头节点地址
 	Point getSelfHeadPoint();
 	Point getEnemyHeadPoint();
