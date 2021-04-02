@@ -35,9 +35,9 @@ namespace TronAPI {
 	// 获取特定类型的结点
 	Point getTargetTypePoint(bool typeCheck(MapNodeType));
 
-	inline int getMapLength();
-	inline int getMapWidth();
-	inline const MapType getMap();
+	int getMapLength();
+	int getMapWidth();
+	const MapType getMap();
 
 	// 判断传入的 Point 是否越界 / 撞墙
 	bool nodeIsOutOfBound(Point point);

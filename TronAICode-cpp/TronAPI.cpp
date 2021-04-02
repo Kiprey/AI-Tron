@@ -38,9 +38,9 @@ namespace TronAPI {
 		return headLoc;
 	}
 
-	inline int getMapLength() { return _mapLength; }
-	inline int getMapWidth() { return _mapWidth; }
-	inline const MapType getMap() { return _map; }
+	int getMapLength() { return _mapLength; }
+	int getMapWidth() { return _mapWidth; }
+	const MapType getMap() { return _map; }
 
 	// 判断当前结点是否为当前 AI 的结点
 	bool nodeIsSelfHead(MapNodeType node)
