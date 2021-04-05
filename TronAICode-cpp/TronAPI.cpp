@@ -38,9 +38,9 @@ namespace TronAPI {
 		return headLoc;
 	}
 
-	inline int getMapLength() { return _mapLength; }
-	inline int getMapWidth() { return _mapWidth; }
-	inline const MapType getMap() { return _map; }
+	int getMapLength() { return _mapLength; }
+	int getMapWidth() { return _mapWidth; }
+	const MapType getMap() { return _map; }
 
 	// 判断当前结点是否为当前 AI 的结点
 	bool nodeIsSelfHead(MapNodeType node)
@@ -176,10 +176,24 @@ namespace TronAPI {
 		}
 	}
 	// 获取某个坐标向特定方向移动后的坐标
+	/// NOTE: 仍然保留原先的函数，以便于更好的兼容旧版API
 	Point getTheUpPoint(Point point) { return Point(point.x, point.y - 1); }
 	Point getTheDownPoint(Point point) { return Point(point.x, point.y + 1); }
 	Point getTheLeftPoint(Point point) { return Point(point.x - 1, point.y); }
 	Point getTheRightPoint(Point point) { return Point(point.x + 1, point.y); }
+
+	Point getBesidePoint(Point point,DirectType direct)
+	{
+		switch (direct)
+		{
+		case DirectType::Down:	return Point(point.x, point.y + 1);
+		case DirectType::Up:	return Point(point.x, point.y - 1);
+		case DirectType::Left:	return Point(point.x - 1, point.y);
+		case DirectType::Right: return Point(point.x + 1, point.y);
+		default: reportErrorAndAbort("无法识别的方向"); return Point();
+		}
+
+	}
 	// 获取头节点地址
 	Point getSelfHeadPoint() { return getTargetTypePoint(nodeIsSelfHead); }
 	Point getEnemyHeadPoint() { return getTargetTypePoint(nodeIsEnemeHead); }

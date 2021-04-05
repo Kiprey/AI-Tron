@@ -35,9 +35,9 @@ namespace TronAPI {
 	// 获取特定类型的结点
 	Point getTargetTypePoint(bool typeCheck(MapNodeType));
 
-	inline int getMapLength();
-	inline int getMapWidth();
-	inline const MapType getMap();
+	int getMapLength();
+	int getMapWidth();
+	const MapType getMap();
 
 	// 判断传入的 Point 是否越界 / 撞墙
 	bool nodeIsOutOfBound(Point point);
@@ -72,10 +72,13 @@ namespace TronAPI {
 	// 设置当前AI的下一个方向
 	void setNextDirection(DirectType direct);
 	// 获取某个坐标向特定方向移动后的坐标
+	/// NOTE: 仍然保留原先的函数，以便于更好的兼容旧版API
 	Point getTheUpPoint(Point point);
 	Point getTheDownPoint(Point point);
 	Point getTheLeftPoint(Point point);
 	Point getTheRightPoint(Point point);
+
+	Point getBesidePoint(Point point, DirectType direct);
 	// 获取头节点地址
 	Point getSelfHeadPoint();
 	Point getEnemyHeadPoint();
